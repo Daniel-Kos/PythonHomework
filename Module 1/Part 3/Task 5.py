@@ -1,0 +1,5 @@
+number = int(input())
+number = list(str(number))
+list.reverse(number)
+number = "".join(number)
+print(number)
