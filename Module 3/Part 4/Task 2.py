@@ -1,14 +1,15 @@
 max_length = 0
-for i in range(1, 10 + 1):
-    for j in range(1, 10 + 1):
+for i in range(1, 11):
+    for j in range(1, 11):
         eq_length = len(f"{i} * {j} = {i * j}")
         if eq_length > max_length:
             max_length = eq_length
 
-for i in range(1, 10 + 1):
+for i in range(1, 11):
     for j in range(1, 11):
         equation = f"{i} * {j} = {i * j}"
         print(equation.ljust(max_length + 1), end='')
     print()
     if i < 10:
         print()
+
