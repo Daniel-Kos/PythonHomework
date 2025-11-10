@@ -1,10 +1,31 @@
 start = int(input('Enter the start of the range:'))
 end = int(input('Enter the end of the range:'))
-final_sheet = []
+sheet = [i for i in range(end + 1)]
+complete_list = []
+index = 0
 
-for n in list(range(start, end)):
-    n = int(n)
-    if n == 2 or n % 2 == 1 and n >= 2:
-        final_sheet.append(n)
+if sheet[1] == 1:
+    sheet[1] = 0
 
-print(final_sheet)
+i = 2
+
+while i <= end:
+
+    if sheet[i] != 0:
+        j = i + i
+
+        while j <= end:
+            sheet[j] = 0
+            j = j + i
+    i += 1
+
+sheet = [i for i in sheet if i != 0]
+
+for n in sheet:
+    if n < start:
+        index += 1
+    elif n >= start:
+        complete_list.append(sheet[index:])
+        break
+
+print(complete_list)
