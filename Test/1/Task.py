@@ -8,10 +8,18 @@ for category, items in products.items():
         name, quantity, price = item
         print(f"{name}: Count:{quantity}, Unite price:{price}")
 
-m_exp = max((item for sublist in products.values()for item in sublist), key=lambda x :x[2])
+m_exp = max(
+    (item for sublist in products.values() for item in sublist), 
+    key=lambda item_details: item_details[2]
+)
 
-m_cat = max(products, key=lambda k : len(products[k]))
+m_cat = max(products, key=lambda category_name: len(products[category_name]))
 
-all_sum = sum(price * count for sublist in products.values() for _, count, price in sublist)
+all_sum = sum(
+    price * count 
+    for sublist in products.values() 
+    for _, count, price in sublist
+)
+
 
 print(m_exp,",",m_cat,",",all_sum)
