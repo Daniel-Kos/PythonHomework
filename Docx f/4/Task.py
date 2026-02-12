@@ -4,22 +4,17 @@ def call_counter(func):
     и выводит имя функции, аргументы и порядковый номер вызова.
     """
     def wrapper(*args, **kwargs):
-        # Увеличиваем счётчик вызовов (хранится как атрибут обёртки)
         wrapper.count += 1
-        # Выводим информацию о вызове
         print(f"Функция {func.__name__} вызвана {wrapper.count} раз")
         print(f"Аргументы: {args}")
-        if kwargs:  # если есть именованные аргументы, выводим их
+        if kwargs:
             print(f"Именованные аргументы: {kwargs}")
-        # Вызываем исходную функцию и возвращаем результат
         return func(*args, **kwargs)
 
-    # Инициализируем счётчик
     wrapper.count = 0
     return wrapper
 
 
-# ---- Примеры функций с декоратором ----
 @call_counter
 def add(a, b):
     """Возвращает сумму двух чисел."""
@@ -32,9 +27,9 @@ def repeat(text, n):
     return text * n
 
 
-# ---- Демонстрация работы ----
 if __name__ == "__main__":
     print(add(2, 3))
     print(add(10, 5))
     print(repeat("Hi", 3))
+
     print(repeat("Hello", 2))
